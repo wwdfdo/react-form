@@ -24,6 +24,9 @@ const Navigation = () => {
               About <span>{favotitesCtx.totalFavorites}</span>
             </Link>
           </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
         </ul>
       </nav>
     </header>

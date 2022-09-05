@@ -4,6 +4,7 @@ import All from "./Pages/All";
 import Faviorites from "./Pages/Faviorites";
 import About from "./Pages/About";
 import Layout from "./Components/Layout/Layout";
+import AuthPage from "./Pages/AuthPage";
 
 // import Todos from "./Components/Todos";
 // import LoginFrom from "./Component/LoginFrom";
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<All />} />
         <Route path="/favorites" element={<Faviorites />} />
         <Route path="/about" element={<About />} />
+        <Route path="/login" element={<AuthPage />} />
       </Routes>
     </Layout>
   );
