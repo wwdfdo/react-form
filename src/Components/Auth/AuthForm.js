@@ -10,6 +10,8 @@ import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
   const emailInputRef = useRef();
+  // const firstnameInputRef = useRef();
+  // const lastnameInputRef = useRef();
   const passwordInputRef = useRef();
 
   const history = useNavigate();
@@ -30,6 +32,8 @@ const AuthForm = () => {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    // const enteredFirstname = firstnameInputRef.current.value;
+    // const enteredLasttname = lastnameInputRef.current.value;
 
     setIsLoading(true);
 
@@ -46,6 +50,8 @@ const AuthForm = () => {
     fetch(url, {
       method: "POST",
       body: JSON.stringify({
+        // firstname: enteredFirstname,
+        // lastname: enteredLasttname,
         email: enteredEmail,
         password: enteredPassword,
         returnSecureToken: true,
@@ -73,7 +79,7 @@ const AuthForm = () => {
       .then((data) => {
         authCtx.login(data.idToken);
 
-        console.log(data.email);
+        console.log(data);
 
         history("/");
       })
@@ -86,6 +92,23 @@ const AuthForm = () => {
     <section className={classes.auth}>
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form onSubmit={submitHandler}>
+        {/* {!isLogin && (
+          <div className={classes.control}>
+            <label htmlFor="email">First Name</label>
+            <input
+              type="text"
+              id="firstname"
+              required
+              ref={firstnameInputRef}
+            />
+          </div>
+        )} */}
+        {/* {!isLogin && (
+          <div className={classes.control}>
+            <label htmlFor="email">Last Name</label>
+            <input type="text" id="lastname" required ref={lastnameInputRef} />
+          </div>
+        )} */}
         <div className={classes.control}>
           <label htmlFor="email">Your Email</label>
           <input type="email" id="email" required ref={emailInputRef} />
