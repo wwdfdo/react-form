@@ -40,11 +40,9 @@ const AuthForm = () => {
     let url;
 
     if (isLogin) {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDYTiAZ06tgN8kskwATmmzhV2iOwq3E0RU";
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
     } else {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDYTiAZ06tgN8kskwATmmzhV2iOwq3E0RU";
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
     }
 
     fetch(url, {
