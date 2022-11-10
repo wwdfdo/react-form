@@ -32,7 +32,7 @@ const Navigation = () => {
           )}
           <li>
             <Link to="/about">
-              About <span>{favotitesCtx.totalFavorites}</span>
+              Cart <span>{favotitesCtx.totalFavorites}</span>
             </Link>
           </li>
           {!isLoggedIn && (
