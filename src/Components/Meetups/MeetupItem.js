@@ -2,11 +2,14 @@ import React, { useContext } from "react";
 import Card from "../Ui/Card";
 import classes from "./MeetupItem.module.css";
 import FavoritesContext from "../../store/favorites-context";
+import AuthContext from "../../store/auth-context";
 
 const MeetupItem = (props) => {
   const { image, title, address, description } = props;
 
   const favoriteCtx = useContext(FavoritesContext);
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
 
   const itemisFavorite = favoriteCtx.itemisFavorite(props.id);
 
@@ -40,6 +43,12 @@ const MeetupItem = (props) => {
             {itemisFavorite ? "Remove From Favorite" : "Add To Favorites"}
           </button>
         </div>
+
+        {isLoggedIn && (
+          <div className={classes.actions}>
+            <button>Delete</button>
+          </div>
+        )}
       </Card>
     </li>
   );

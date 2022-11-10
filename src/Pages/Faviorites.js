@@ -16,7 +16,7 @@ const Faviorites = () => {
         },
       }
     ).then(() => {
-      history("/");
+      history("/customize");
     });
   };
 

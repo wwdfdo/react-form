@@ -22,12 +22,20 @@ const Navigation = () => {
       <div className={classes.logo}>React</div>
       <nav>
         <ul>
-          <li>
-            <Link to="/">All</Link>
-          </li>
+          {!isLoggedIn && (
+            <li>
+              <Link to="/">All</Link>
+            </li>
+          )}
+
           {isLoggedIn && (
             <li>
               <Link to="/favorites">Faviorites</Link>
+            </li>
+          )}
+          {isLoggedIn && (
+            <li>
+              <Link to="/customize">Customize</Link>
             </li>
           )}
           <li>
