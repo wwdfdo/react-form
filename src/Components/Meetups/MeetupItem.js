@@ -3,9 +3,12 @@ import Card from "../Ui/Card";
 import classes from "./MeetupItem.module.css";
 import FavoritesContext from "../../store/favorites-context";
 import AuthContext from "../../store/auth-context";
+import { useNavigate } from "react-router-dom";
 
 const MeetupItem = (props) => {
   const { image, title, address, description } = props;
+
+  const history = useNavigate();
 
   const favoriteCtx = useContext(FavoritesContext);
   const authCtx = useContext(AuthContext);
@@ -27,6 +30,20 @@ const MeetupItem = (props) => {
     }
   }
 
+  function deleteHandler(id) {
+    fetch(
+      `https://react-form-e0b16-default-rtdb.firebaseio.com/formdata/${id}.json`,
+      {
+        method: "Delete",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then(() => {
+      history(0);
+    });
+  }
+
   return (
     <li className={classes.item}>
       <Card>
@@ -46,7 +63,7 @@ const MeetupItem = (props) => {
 
         {isLoggedIn && (
           <div className={classes.actions}>
-            <button>Delete</button>
+            <button onClick={() => deleteHandler(props.id)}>Delete</button>
           </div>
         )}
       </Card>
